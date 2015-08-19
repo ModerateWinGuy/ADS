@@ -47,10 +47,15 @@
             this.trackBar1 = new System.Windows.Forms.TrackBar();
             this.label4 = new System.Windows.Forms.Label();
             this.grpbxStrat = new System.Windows.Forms.GroupBox();
-            this.rbRandom = new System.Windows.Forms.RadioButton();
-            this.rbSmallest = new System.Windows.Forms.RadioButton();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.rbSmallest = new System.Windows.Forms.RadioButton();
+            this.rbRandom = new System.Windows.Forms.RadioButton();
             this.lblStagingQueue = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.txtMinCheckout = new System.Windows.Forms.TextBox();
+            this.txtMaxCheckout = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
             this.grpbxStrat.SuspendLayout();
             this.SuspendLayout();
@@ -189,12 +194,15 @@
             // 
             // trackBar1
             // 
+            this.trackBar1.LargeChange = 10;
             this.trackBar1.Location = new System.Drawing.Point(246, 531);
             this.trackBar1.Maximum = 120;
             this.trackBar1.Minimum = 10;
             this.trackBar1.Name = "trackBar1";
             this.trackBar1.Size = new System.Drawing.Size(409, 45);
+            this.trackBar1.SmallChange = 5;
             this.trackBar1.TabIndex = 8;
+            this.trackBar1.TickFrequency = 5;
             this.trackBar1.Value = 120;
             this.trackBar1.Scroll += new System.EventHandler(this.trackBar1_Scroll);
             // 
@@ -212,22 +220,22 @@
             this.grpbxStrat.Controls.Add(this.radioButton1);
             this.grpbxStrat.Controls.Add(this.rbSmallest);
             this.grpbxStrat.Controls.Add(this.rbRandom);
-            this.grpbxStrat.Location = new System.Drawing.Point(714, 497);
+            this.grpbxStrat.Location = new System.Drawing.Point(831, 506);
             this.grpbxStrat.Name = "grpbxStrat";
-            this.grpbxStrat.Size = new System.Drawing.Size(356, 70);
+            this.grpbxStrat.Size = new System.Drawing.Size(345, 70);
             this.grpbxStrat.TabIndex = 10;
             this.grpbxStrat.TabStop = false;
             this.grpbxStrat.Text = "Queue Strat";
             // 
-            // rbRandom
+            // radioButton1
             // 
-            this.rbRandom.AutoSize = true;
-            this.rbRandom.Location = new System.Drawing.Point(7, 29);
-            this.rbRandom.Name = "rbRandom";
-            this.rbRandom.Size = new System.Drawing.Size(65, 17);
-            this.rbRandom.TabIndex = 0;
-            this.rbRandom.Text = "Random";
-            this.rbRandom.UseVisualStyleBackColor = true;
+            this.radioButton1.AutoSize = true;
+            this.radioButton1.Location = new System.Drawing.Point(234, 29);
+            this.radioButton1.Name = "radioButton1";
+            this.radioButton1.Size = new System.Drawing.Size(96, 17);
+            this.radioButton1.TabIndex = 2;
+            this.radioButton1.Text = "Staging Queue";
+            this.radioButton1.UseVisualStyleBackColor = true;
             // 
             // rbSmallest
             // 
@@ -241,30 +249,78 @@
             this.rbSmallest.Text = "Smallest Queue";
             this.rbSmallest.UseVisualStyleBackColor = true;
             // 
-            // radioButton1
+            // rbRandom
             // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(234, 29);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(96, 17);
-            this.radioButton1.TabIndex = 2;
-            this.radioButton1.Text = "Staging Queue";
-            this.radioButton1.UseVisualStyleBackColor = true;
+            this.rbRandom.AutoSize = true;
+            this.rbRandom.Location = new System.Drawing.Point(7, 29);
+            this.rbRandom.Name = "rbRandom";
+            this.rbRandom.Size = new System.Drawing.Size(65, 17);
+            this.rbRandom.TabIndex = 0;
+            this.rbRandom.Text = "Random";
+            this.rbRandom.UseVisualStyleBackColor = true;
             // 
             // lblStagingQueue
             // 
             this.lblStagingQueue.AutoSize = true;
-            this.lblStagingQueue.Location = new System.Drawing.Point(129, 553);
+            this.lblStagingQueue.Location = new System.Drawing.Point(126, 557);
             this.lblStagingQueue.Name = "lblStagingQueue";
             this.lblStagingQueue.Size = new System.Drawing.Size(83, 13);
             this.lblStagingQueue.TabIndex = 11;
             this.lblStagingQueue.Text = "StagingQueSize";
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(666, 507);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(79, 13);
+            this.label5.TabIndex = 12;
+            this.label5.Text = "Checkout Time";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(669, 528);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(27, 13);
+            this.label6.TabIndex = 13;
+            this.label6.Text = "Min:";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(666, 545);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(30, 13);
+            this.label7.TabIndex = 14;
+            this.label7.Text = "Max:";
+            // 
+            // txtMinCheckout
+            // 
+            this.txtMinCheckout.Location = new System.Drawing.Point(702, 524);
+            this.txtMinCheckout.Name = "txtMinCheckout";
+            this.txtMinCheckout.Size = new System.Drawing.Size(100, 20);
+            this.txtMinCheckout.TabIndex = 15;
+            this.txtMinCheckout.Text = "2";
+            // 
+            // txtMaxCheckout
+            // 
+            this.txtMaxCheckout.Location = new System.Drawing.Point(702, 545);
+            this.txtMaxCheckout.Name = "txtMaxCheckout";
+            this.txtMaxCheckout.Size = new System.Drawing.Size(100, 20);
+            this.txtMaxCheckout.TabIndex = 16;
+            this.txtMaxCheckout.Text = "10";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1213, 592);
+            this.ClientSize = new System.Drawing.Size(1193, 592);
+            this.Controls.Add(this.txtMaxCheckout);
+            this.Controls.Add(this.txtMinCheckout);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.lblStagingQueue);
             this.Controls.Add(this.grpbxStrat);
             this.Controls.Add(this.label4);
@@ -316,6 +372,11 @@
         private System.Windows.Forms.RadioButton rbSmallest;
         private System.Windows.Forms.RadioButton rbRandom;
         private System.Windows.Forms.Label lblStagingQueue;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox txtMinCheckout;
+        private System.Windows.Forms.TextBox txtMaxCheckout;
     }
 }
 

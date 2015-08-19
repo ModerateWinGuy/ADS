@@ -102,7 +102,7 @@ namespace QueueSimulator
         {
             while ((getEmptyQueueIndex() != -1) && (stageingQueueSize > 0))
             {
-                queues[getEmptyQueueIndex()].Enqueue(new QueueingPerson(rand.Next(60 * 1, 60 * 10)));
+                queues[getEmptyQueueIndex()].Enqueue(new QueueingPerson(rand.Next(60 * Int32.Parse(txtMinCheckout.Text), 60 * Int32.Parse(txtMaxCheckout.Text))));
                 stageingQueueSize--;
             }
         }
@@ -149,6 +149,9 @@ namespace QueueSimulator
         private void button1_Click(object sender, EventArgs e)
         {
             timer1.Enabled = !timer1.Enabled;
+            button1.Text = timer1.Enabled ? "Pause Sim" : "Start Sim";
+            txtMinCheckout.Enabled = !timer1.Enabled;
+            txtMaxCheckout.Enabled = !timer1.Enabled;
         }
 
         private void trackBar1_Scroll(object sender, EventArgs e)
