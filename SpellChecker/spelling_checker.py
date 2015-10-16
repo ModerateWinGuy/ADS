@@ -32,15 +32,16 @@ class SpellChecker:
                 self.to_check.append(line.lower())
 
     def check_all_words(self):
-        for item in self.to_check:
-            for string in item.split():
-                self.check_word(string)
+
+        for i in range(len(self.to_check)):
+            for string in self.to_check[i].split():
+                self.check_word(string, i)
                 self.print_word(string)
             print
 
-    def check_word(self, word):
+    def check_word(self, word, line_occured):
         if word not in self.correct_words:
-            self.corrections.append({"Misspelt word" : word, "possible corrections": self.get_options(word)})
+            self.corrections.append({"Misspelt word" : word, "line occured" : line_occured, "possible corrections": self.get_options(word)})
 
     def print_word(self, word):
         if word in self.correct_words:
