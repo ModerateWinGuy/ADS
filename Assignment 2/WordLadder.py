@@ -26,6 +26,8 @@ class WordLadderCalculator:
                     if word not in word_path.keys():
                         word_path[word] = current_word
                         word_queue.put(word)
+            if current_word is end_word:
+                break
 
 
         if end_word in word_path.keys():
