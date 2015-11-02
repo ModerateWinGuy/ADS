@@ -1,14 +1,16 @@
 __author__ = 'mazurdm1'
 import Queue
+import string
 
 
 class WordLadderCalculator:
 
     def __init__(self):
+        self.alphabet = list(string.ascii_lowercase)
         self.dictionary = set()
         self.set_up_dictionary()
-        word_one = raw_input()
-        word_two = raw_input()
+        word_one = raw_input("Enter the first word: ")
+        word_two = raw_input("Enter the second word: ")
         self.find_word_ladder(word_one,word_two)
 
 
@@ -16,22 +18,26 @@ class WordLadderCalculator:
         word_path = dict()
         word_queue = Queue.Queue()
         word_queue.put(start_word)
-
+        word_path[start_word] = None
         while not word_queue.empty():
             current_word = word_queue.get()
-            word_path[current_word] = None
             for word in self.adjacent_words(current_word):
-                if word in self.dictionary():
+                if word in self.dictionary:
                     if word not in word_path.keys():
                         word_path[word] = current_word
                         word_queue.put(word)
 
 
         if end_word in word_path.keys():
+            print "End of ladder:"
+            print "--------------"
+            print end_word
             current = word_path[end_word]
-            while current is not start_word:
+            while current is not None:
                 print current
                 current = word_path[current]
+            print "---------------"
+            print "Start of ladder"
 
 
 
