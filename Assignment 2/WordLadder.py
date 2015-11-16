@@ -40,7 +40,8 @@ class WordLadderCalculator:
                 current = word_path[current]
             print "---------------"
             print "Start of ladder"
-
+        else:
+            print "No possible ladder found"
 
 
 
