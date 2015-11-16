@@ -23,6 +23,6 @@ class InvertedFileCreator:
 if __name__ == "__main__":
     input_string = "this is a long long text lol lol lol this is a word lol"
     inverter = InvertedFileCreator(input_string)
-    print inverter.word_storage
+    print (inverter.word_storage)
 
     ## NB: It will not remove punctuation.
