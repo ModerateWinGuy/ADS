@@ -15,21 +15,27 @@ class WordLadderCalculator:
 
 
     def find_word_ladder(self, start_word, end_word):
+        # Word path is a dict that is used as a Tree structure
         word_path = dict()
+        # The queue is used for breadth first traversal
         word_queue = Queue.Queue()
         word_queue.put(start_word)
         word_path[start_word] = None
         while not word_queue.empty():
             current_word = word_queue.get()
-            for word in self.adjacent_words(current_word):
-                if word in self.dictionary:
-                    if word not in word_path.keys():
-                        word_path[word] = current_word
-                        word_queue.put(word)
+            # Gets all possible one letter different words
+            possible_words = self.adjacent_words(current_word)
+            for word in possible_words:
+                # And not already existing somewhere else in the tree
+                if word not in word_path.keys():
+                    # Add it to the tree as a child of the current word that is being processed
+                    word_path[word] = current_word
+                    word_queue.put(word)
             if current_word == end_word:
+                # If the word that is found is the word that is being looked for, break the while.
                 break
 
-
+        # Climb back up the ladder from the bottom branch where the found word is located (if it exists)
         if end_word in word_path.keys():
             print "End of ladder:"
             print "--------------"
@@ -60,7 +66,7 @@ class WordLadderCalculator:
         for i in range(len(base_word_array)):
             for letter in self.alphabet:
                 new_word = base_word_array[:i] + list(letter) + base_word_array[i + 1:]
-                if self.as_string(new_word) in self.dictionary:
+                if self.as_string(new_word) in self.dictionary and self.as_string(new_word) not in adjacent_words:
                     adjacent_words.append(self.as_string(new_word))
 
         return adjacent_words
